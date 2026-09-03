@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu Nombre — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#071522;
+    --panel:#0D2233;
+    --panel-hover:#123049;
+    --line:#1C3A50;
+    --text:#F8FAFC;
+    --muted:#9FB4C4;
+    --brass:#66E6FF;
+    --brass-dim:#2E7A94;
+    --lilac:#B9A6E8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    overflow-x:hidden;
+    background:
+      radial-gradient(ellipse at top, rgba(102,230,255,0.06), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:72px 20px 48px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  .page{ width:100%; max-width:480px; }
+
+  .photo-wrap{
+    position:relative;
+    width:100vw;
+    left:50%;
+    right:50%;
+    margin-left:-50vw;
+    margin-right:-50vw;
+    margin-top:-72px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .photo-wrap img{
+    display:block;
+    width:100%;
+    height:460px;
+    object-fit:cover;
+    object-position:center 20%;
+  }
+  @media (max-width: 400px){
+    .photo-wrap img{ height:380px; }
+  }
+  .photo-wrap::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom,
+      rgba(7,21,34,0) 45%,
+      rgba(7,21,34,0.35) 68%,
+      rgba(7,21,34,0.75) 85%,
+      var(--ink) 100%);
+  }
+  .name{
+    font-family:'Poppins', sans-serif;
+    font-size:34px;
+    font-weight:700;
+    text-align:center;
+    letter-spacing:-0.3px;
+    color:var(--text);
+    text-shadow:0 0 24px rgba(102,230,255,0.10);
+  }
+
+  /* Status line — signature element */
+  .status{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    margin:24px 0 40px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    letter-spacing:0.3px;
+  }
+  .dot{
+    width:7px; height:7px;
+    border-radius:50%;
+    background:#7FE0A8;
+    box-shadow:0 0 0 0 rgba(127,224,168,0.5);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(127,224,168,0.4); }
+    70%{ box-shadow:0 0 0 6px rgba(127,224,168,0); }
+    100%{ box-shadow:0 0 0 0 rgba(127,224,168,0); }
+  }
+  .status .loc{ color:var(--text); }
+  .status .sep{ color:var(--line); }
+
+  /* Section eyebrow */
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:2.2px;
+    color:var(--brass-dim);
+    margin:0 4px 14px;
+    text-align:center;
+  }
+
+  /* Single pill button — card style */
+  .pill-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    text-align:center;
+    background:linear-gradient(135deg, #F4E1B5, #F5F3EE 50%, #C9A45C);
+    color:#3A2E1A;
+    text-decoration:none;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    letter-spacing:0.3px;
+    padding:24px 28px;
+    border-radius:20px;
+    border:1px solid rgba(244,225,181,0.85);
+    transition:box-shadow 0.3s ease, transform 0.15s ease, filter 0.3s ease;
+    transform-origin:center;
+    animation:champagne-pulse 2.6s ease-in-out infinite;
+  }
+  .pill-btn svg{ width:22px; height:22px; flex-shrink:0; }
+  .pill-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:60%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.8),
+        transparent
+    );
+
+    transform:skewX(-20deg);
+    animation:shine 2.2s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes shine{
+    0%{
+        left:-120%;
+    }
+
+    100%{
+        left:140%;
+    }
+}
+
+  .pill-btn:hover, .pill-btn:focus-visible{
+    filter:brightness(1.06);
+    transform:scale(1.07);
+    box-shadow:0 0 48px rgba(244,225,181,0.6), 0 12px 32px rgba(0,0,0,0.4);
+    outline:none;
+  
+}
+
+  .pill-btn.clicked{
+    animation:click-pulse 0.45s ease;
+  }
+  @keyframes champagne-pulse{
+    0%, 100%{ transform:scale(1); box-shadow:0 0 0 rgba(244,225,181,0.0); }
+    50%{ transform:scale(1.02); box-shadow:0 0 26px rgba(244,225,181,0.35); }
+  }
+  @keyframes click-pulse{
+    0%{ transform:scale(1); }
+    35%{ transform:scale(0.94); }
+    65%{ transform:scale(1.08); }
+    100%{ transform:scale(1); }
+  }
+
+  /* Link rows — styled like a directory listing */
+  .links{ display:flex; flex-direction:column; gap:10px; margin-bottom:40px; }
+  .link-row{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:rgba(13,34,51,0.5);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+    text-decoration:none;
+    color:var(--text);
+    transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .link-row:hover, .link-row:focus-visible{
+    background:rgba(18,48,73,0.7);
+    border-color:var(--brass-dim);
+    transform:translateX(2px);
+    outline:none;
+  }
+  .link-row .path{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    min-width:64px;
+  }
+  .link-row .label{
+    flex:1;
+    font-size:15px;
+    font-weight:500;
+  }
+  .link-row .arrow{
+    color:var(--brass);
+    font-size:15px;
+    opacity:0.7;
+    transition:transform 0.18s ease;
+  }
+  .link-row:hover .arrow{ transform:translateX(3px); opacity:1; }
+
+  /* Socials */
+  .socials{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin:40px 0 44px;
+    flex-wrap:wrap;
+  }
+  .socials a{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:50px; height:50px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(244,225,181,0.35);
+    color:#F8FAFC;
+    transition:background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .socials a svg{ width:20px; height:20px; }
+  .socials a:hover, .socials a:focus-visible{
+    background:rgba(255,255,255,0.09);
+    border-color:rgba(244,225,181,0.7);
+    box-shadow:0 0 18px rgba(244,225,181,0.25);
+    transform:translateY(-2px);
+    outline:none;
+  }
+
+  footer{
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.5px;
+    color:#3E5670;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Reemplaza las iniciales o pon una <img> aquí -->
+  <!-- Para poner tu foto: reemplaza src="foto.jpg" por tu link -->
+  <div class="photo-wrap">
+    <img src="https://i.imgur.com/RXEQRep.jpeg" alt="Tu Nombre">
+  </div>
+
+  <h1 class="name">Sandra Breeze</h1>
+
+  <div class="status">
+    <span class="dot"></span>
+    <span>disponible</span>
+    <span class="sep">·</span>
+    <span class="loc">Tlaxcala, MX</span>
+  </div>
+
+  <a class="pill-btn" id="contactBtn" href="https://onlyfans.com/sandrabrezeofficial/c11" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+    <span>DÉJAME ENTRAR 🔒</span>
+  </a>
+
+  <div class="socials">
+    <a href="https://www.instagram.com/real.sandrabreeze?igsi=MXB1N3kxbXJ2cng2aQ%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4.2"/>
+        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.tiktok.com/@sandrabreeze0?_r=1&_t=ZS-99NwPTdHExB" target="_blank" rel="noopener" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M16.6 3c.3 1.9 1.5 3.4 3.4 3.7v2.5c-1.3.1-2.5-.3-3.4-1v6.8c0 3.1-2.5 5.3-5.3 5.3-1.5 0-2.9-.6-3.9-1.7-1-1.1-1.5-2.5-1.4-4 .2-2.7 2.5-4.8 5.2-4.8.3 0 .6 0 .9.1v2.6c-.3-.1-.6-.2-.9-.2-1.3 0-2.4 1-2.5 2.3-.1 1.4 1 2.6 2.4 2.6 1.4 0 2.6-1.1 2.6-2.6V3h2.9z"/>
+      </svg>
+    </a>
+  </div>
+
+  <footer>hecho a mano · 2026</footer>
+
+</div>
+
+<script>
+  const contactBtn = document.getElementById('contactBtn');
+  contactBtn.addEventListener('click', function(){
+    contactBtn.classList.remove('clicked');
+    void contactBtn.offsetWidth; // reinicia la animación si se hace clic varias veces seguidas
+    contactBtn.classList.add('clicked');
+  });
+</script>
+
+</body>
+</html>
