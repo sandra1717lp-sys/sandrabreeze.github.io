@@ -124,8 +124,8 @@
     justify-content:center;
     gap:12px;
     text-align:center;
-    background:linear-gradient(135deg, #F4E1B5, #F5F3EE 50%, #C9A45C);
-    color:#3A2E1A;
+    background:linear-gradient(135deg, #7DD8F0, #EAF9FF 50%, #2E9FD9);
+    color:#0A2A3A;
     text-decoration:none;
     font-family:'Inter', sans-serif;
     font-weight:600;
@@ -133,7 +133,7 @@
     letter-spacing:0.3px;
     padding:24px 28px;
     border-radius:20px;
-    border:1px solid rgba(244,225,181,0.85);
+    border:1px solid rgba(125,216,240,0.85);
     transition:box-shadow 0.3s ease, transform 0.15s ease, filter 0.3s ease;
     transform-origin:center;
     animation:champagne-pulse 2.6s ease-in-out infinite;
@@ -170,9 +170,10 @@
 }
 
   .pill-btn:hover, .pill-btn:focus-visible{
+    animation-play-state:paused;
     filter:brightness(1.06);
-    transform:scale(1.07);
-    box-shadow:0 0 48px rgba(244,225,181,0.6), 0 12px 32px rgba(0,0,0,0.4);
+    transform:scale(1.04);
+    box-shadow:0 0 48px rgba(125,216,240,0.6), 0 12px 32px rgba(0,0,0,0.4);
     outline:none;
   
 }
@@ -181,8 +182,8 @@
     animation:click-pulse 0.45s ease;
   }
   @keyframes champagne-pulse{
-    0%, 100%{ transform:scale(1); box-shadow:0 0 0 rgba(244,225,181,0.0); }
-    50%{ transform:scale(1.02); box-shadow:0 0 26px rgba(244,225,181,0.35); }
+    0%, 100%{ transform:scale(1); box-shadow:0 0 0 rgba(125,216,240,0.0); }
+    50%{ transform:scale(1.02); box-shadow:0 0 26px rgba(125,216,240,0.35); }
   }
   @keyframes click-pulse{
     0%{ transform:scale(1); }
@@ -275,7 +276,7 @@
   <!-- Reemplaza las iniciales o pon una <img> aquí -->
   <!-- Para poner tu foto: reemplaza src="foto.jpg" por tu link -->
   <div class="photo-wrap">
-    <img src="https://i.imgur.com/RXEQRep.jpeg" alt="Tu Nombre">
+    <img src="https://i.imgur.com/ciZWoC4.jpeg" alt="Tu Nombre">
   </div>
 
   <h1 class="name">Sandra Breeze</h1>
